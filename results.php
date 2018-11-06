@@ -1,6 +1,6 @@
 <?php
 //include and initialize Poll class 
-include 'Poll.class.php';
+include 'Poll.php';
 $poll = new Poll;
 
 //get poll result data
