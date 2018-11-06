@@ -1292,7 +1292,72 @@ if(isset($_POST['voteSubmit'])){
     }
 }
 ?>
+<style>
 
+.crunchify-top {
+    display: none;
+    position: fixed;
+    bottom: 40px;
+    right: 15px;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    background-color: rgb(58, 200, 222);
+    text-decoration: none;
+    border-radius: 4px;
+    color: #fff;
+    font-size: 20px;
+    text-align: center;
+    cursor: pointer;
+    z-index: 333;
+}
+
+.crunchify-top:hover {
+    background-color: rgb(49, 160, 177);
+    color: #fff;
+}
+.pollContent{
+    float: left;
+    width: 500px;
+}
+.pollContent h3 {
+    font-size: 18px;
+    color: #333;
+    text-align: left;
+    float: left;
+    border-bottom: 2px solid #333;
+    width: 100%;
+    margin: 0 auto;
+    padding-bottom: 10px;
+}
+.pollContent ul{
+    list-style: none;
+    float: left;
+    width: 100%;
+    padding: 10px;
+}
+.pollContent input[type="submit"], .pollContent a{
+    border: none;
+    font-size: 16px;
+    color: #fff;
+    border-radius: 3px;
+    padding: 10px 15px 10px 15px; 
+    background-color: #34a853;
+    text-decoration: none;
+    cursor: pointer;
+}
+.stmsg{font-size: 16px;color:#FBBC05;}
+
+
+
+
+
+
+
+
+
+
+</style>
 <!--Advertisement-->
 </div>
 <!-- Right Section -->

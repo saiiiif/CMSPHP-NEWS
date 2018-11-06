@@ -1,3 +1,5 @@
+
+
 <?php
 //include and initialize Poll class 
 include 'Poll.php';
@@ -104,3 +106,6 @@ a { text-decoration: none; color: #EC5C93; }
 
   
 </style>
+
+
+
