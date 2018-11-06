@@ -1290,6 +1290,10 @@ if(isset($_POST['voteSubmit'])){
     }else{
         $statusMsg = 'Your vote already had submitted.';
     }
+	
+
+
+
 }
 ?>
 <style>
@@ -1358,6 +1362,7 @@ if(isset($_POST['voteSubmit'])){
 
 
 </style>
+
 <!--Advertisement-->
 </div>
 <!-- Right Section -->

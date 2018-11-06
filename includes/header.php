@@ -23,9 +23,12 @@
     <!-- Owl carousel -->
     <link href="assets/css/owl.carousel.css" rel="stylesheet">
     <link href="assets/css/owl.theme.default.min.css" rel="stylesheet">
+
     <!-- Theme Style -->
     <link href="assets/css/style.css" rel="stylesheet">
     <link href="assets/css/www_rate_calc_frame.css" rel="stylesheet" title="stylesheet" type="text/css" />
+
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
