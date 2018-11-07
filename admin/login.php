@@ -6,6 +6,7 @@
 <link href="css/plugins/loginStyle.css" rel="stylesheet" >              
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <!------ Include the above in your HEAD tag ---------->
 
 <div class="wrapper fadeInDown">
@@ -18,66 +19,23 @@
       <h1>Alshahed News</h1>
     </div>
 
-    <!-- Login Form -->
-    <form action="login.php" method="POST">
+<?php    
+echo "<script>   swal('wrong username or password','','warning');  </script>";
+?>
 
-      <input type="text"  class="fadeIn second" name="username" placeholder="username">
-      <input type="text"  class="fadeIn third" name="user_password" placeholder="password">
+    <!-- Login Form -->
+    <form  method="post" action="loginfunction.php">
+
+      <input type="text"  class="fadeIn second" name="username1" placeholder="username" >
+      <input type="text"  class="fadeIn third" name="user_password1" placeholder="password" >
       <input type="submit" class="fadeIn fourth" value="Log In" name="login">
 
 
     </form>
 
-<?php if(isset($_POST['submit'])){
-
-
-    $username=$_POST['username'];
-    $user_password=$_POST['user_password'];
-
-    $username=mysqli_real_escape_string($connection,$username);
-
-    $user_password=myssqli_real_escape_string($connection,$user_password);
-
-    $query="SELECT * FROM users WHERE username='{$username}'";
-    
-    $select_user_query=mysqli_query($connection,$query);
-
-    if(!select_user_query){
-
-   die("QUERY FAILD".mysqli_error($connection));
-
-
-    }
-
-    while ($row=mysqli_fetch_array($select_user_query)) {
-      
-      
-      $db_username=$row['username'];
-      $db_password=$row['password'];
-
-    }
-    if($username !==$db_username && $password !==$db_password){
-
-     header("location: ../index.php");
-
-     
-
-
-     
 
 
 
-    }elseif($username ==$db_username && $password ==$db_password) {
-      header("location: index.php");
-      
-    }
-
-
-
-   }
-
-
-?>
    
 
     <!-- Remind Passowrd -->

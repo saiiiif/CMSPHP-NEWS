@@ -19,7 +19,7 @@ if(!empty($pollResult['options'])){ $i=0;
         //Calculate vote percent
         $votePercent = round(($vote/$pollResult['total_votes'])*100);
         $votePercent = !empty($votePercent)?$votePercent.'%':'0%';
-        //Define bar color class
+        //Define bar color class 
         if(!array_key_exists($i, $barColorArr)){
             $i=0;
         }
