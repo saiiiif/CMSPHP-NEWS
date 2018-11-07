@@ -1,5 +1,6 @@
 
  <?php include "includes/header.php"; ?>
+ <?php include "../includes/db.php"; ?>
 <body>
 
     <div id="wrapper">
@@ -166,12 +167,8 @@
             </div>
             <!-- /.navbar-collapse -->
         </nav>
-         
-      <script>
 
-        swal("You are connected!", "You clicked the button!", "success");
 
-    </script>
 
 
 
@@ -195,6 +192,48 @@
                                 <i class="fa fa-file"></i> Blank Page
                             </li>
                         </ol>
+                       <!-- /.User dashbord -->
+
+                        <?php 
+                    $query="SELECT * FROM users";
+                    $select_user_query=mysqli_query($connection,$query);
+                       ?>
+
+                 <table class="table">
+                    <thead>
+                        <th> user name </th>
+                        <th> user email </th>
+                        <th> user image</th>
+                        <th>user role </th>
+                    </thead>
+                    <tbody>
+                 <?php while ($row =mysqli_fetch_assoc($select_user_query)){
+                   
+                $username=$row['username'];
+                $user_email=$row['user_email'];
+                $user_image=$row['user_image'];
+                $user_role=$row['user_role'];
+                
+                echo "<tr>";
+                
+                echo "<td>{$username}</td>";
+                echo "<td>{$user_email}</td>";
+                echo "<td> {$user_image}</td>";
+                echo "<td>{$user_role}</td>";
+
+                 echo "</tr>";
+
+
+
+                 }
+                 ?>
+                    </tbody>
+                 </table>
+
+                
+
+
+                        
                     </div>
                 </div>
                 <!-- /.row -->
