@@ -226,7 +226,7 @@
                 echo "<td>{$post_date}</td>";  
                 echo "<td><img src='images/{$post_image}.jpg' class='img-responsive' alt='image' </td>";  
                 echo "<td>{$post_content}</td>";  
-                echo "<td ><a href='posts.php?delete={$post_category_id}'>delete</a> </td>";
+                echo "<td ><a href='posts.php?delete={$post_id}'>delete</a> </td>";
                 echo "<td ><a href='edit_post.php?edit={$post_id}&author={$post_author}&date={$post_date}&image={$post_image}&content={$post_content}&title={$post_title}'>edit</a> </td>";
                 echo "</tr>" ;
 
