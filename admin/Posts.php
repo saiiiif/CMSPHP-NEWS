@@ -213,11 +213,12 @@
             while ($row =mysqli_fetch_assoc($select_posts_query)){
 
              $post_category_id=$row['post_category_id'];
+             $post_id=$row['post_id'];
              $post_author=$row['post_author'];
              $post_date=$row['post_date'];
              $post_image=$row['post_image'];
              $post_content=$row['post_content']; 
-
+             $post_title=$row['post_title'];
 
                 echo "<tr>"; 
                 echo "<td>{$post_category_id}</td>";  
@@ -225,43 +226,33 @@
                 echo "<td>{$post_date}</td>";  
                 echo "<td><img src='images/{$post_image}.jpg' class='img-responsive' alt='image' </td>";  
                 echo "<td>{$post_content}</td>";  
-               
+                echo "<td ><a href='posts.php?delete={$post_category_id}'>delete</a> </td>";
+                echo "<td ><a href='edit_post.php?edit={$post_id}&author={$post_author}&date={$post_date}&image={$post_image}&content={$post_content}&title={$post_title}'>edit</a> </td>";
                 echo "</tr>" ;
 
             }
             ?>
 
 
-
-            
-          
-                 
+         <?php 
+          if(isset($_GET['delete']))
+           {
+            $the_post_id=$_GET['delete'];
+            $query="DELETE FROM posts WHERE post_id ={$the_post_id}";
+            $delete=mysqli_query($connection ,$query);
+            }
+          ?>               
                 </tbody>
                 </table>
-
-                  
-
                  </div>
                         <ol class="breadcrumb">
 
-
-                       
-
-                      
-
-
                         </ol>
-
-                  
 
                     </div>
 
-
                 </div>
                 <!-- /.row -->
-
-
-
 
             </div>
             <!-- /.container-fluid -->
