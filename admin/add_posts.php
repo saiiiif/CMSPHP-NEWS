@@ -3,6 +3,10 @@
  <?php include "includes/header.php"; ?>
 
 <body>
+    <!-- image script -->
+ 
+
+
 
     <div id="wrapper">
 
@@ -185,20 +189,55 @@
 
                     $query="SELECT * FROM posts";
                     $select_posts_query=mysqli_query($connection,$query);
+                     $query1 = "SELECT * FROM category";
+                       $select_category_query = mysqli_query($connection,$query1);
 
                     ?>
 
                     
+                 
+
 
                   
                         <div class="col-xs-6">
 
                 <form action="" method="POST" enctype="multipart/form-data"> 
+                      <div class="form-group">
+                    <label for="post-title">
+                        Post Category
+                    </label>
+
+                        <select>
+
+                        <?php
                     
+                      while ($row=mysqli_fetch_assoc($select_category_query)) {
+                      
+                      $cat_id1=$row['cat_id'];
+                      $cat_title1=$row['cat_title'];
+
+                                                                      
+                    echo "<option value='".$cat_id1."'>".$cat_title1."</option>";
+                      }
+                 
+                     ?>               
+                    
+                   </select>
+
+
+               
+
+
+
+
+
                     <div class="form-group">
                     <label for="post-title">
                         Post title
                     </label>
+
+
+
                     <input type="text" name="post_title" class="form-control">
                 </div>
                 <div class="form-group">
@@ -216,7 +255,7 @@
                 </div>
                 <div class="form-group">
                     <label> Upload image </label>
-                    <input type="file" name="post_image" class="form-control">
+                    <input type="file" name="file" class="form-control" id="image">
 
 
                 </div> 
@@ -243,11 +282,36 @@
               <?php
                         if(isset($_POST['submit'])){
 
+                       
+
+
+                      $name = $_FILES['file']['name'];
+                      $target_dir = "images/";
+                      $target_file = $target_dir . basename($_FILES["file"]["name"]);
+
+                     // Select file type
+                  $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+
+                  // Valid file extensions
+                  $extensions_arr = array("jpg","jpeg","png","gif");
+
+               
                         $post_title=$_POST['post_title'];
                         $post_author=$_POST['post_author'];
-                        $post_image=$_POST['post_image'];
+                        
+                        $id_image="1";
                         $post_content=$_POST['post_content'];
-                        $post_date=$_POST['post_date'];
+                        $post_date=$_POST['date'];
+
+
+ // Check extension
+              
+ 
+                   // Convert to base64 
+                       $image_base64 = base64_encode(file_get_contents($_FILES['file']['tmp_name']) );
+                       $image = 'data:image/'.$imageFileType.';base64,'.$image_base64;
+
+
 
                         if($post_title =="" || empty($post_title)){
 
@@ -256,9 +320,20 @@
                         } else{
 
                             $query="INSERT INTO posts (post_title,post_author,post_date,post_image,post_content)";
-                          $query.="VALUE('{$post_title }','{$post_author }','{$post_date }','{$post_image }','{$cat_content }')";
+                          $query.="VALUE('{$post_title }','{$post_author }','{$post_date }','{$id_image}','{$post_content }')";
 
-                            $create_category_query=mysqli_query($connection,$query);
+                           $query1 = "insert into images(name) values('".$name."')";
+                           $create_image_query1=mysqli_query($connection,$query1);
+                        
+                            $create_category_query=mysqli_query($connection,$query); 
+
+                             if(!$create_image_query1){
+
+
+                             die('QUERY faild'.mysqli_error($connection));
+
+                            }
+                            
                             if(!$create_category_query){
 
 
@@ -267,8 +342,11 @@
                             }
 
                         }
+                            move_uploaded_file($_FILES['file']['tmp_name'],$target_dir.$name);
+                      
 
-                        }
+                        
+                    }
 
                         ?>
                   

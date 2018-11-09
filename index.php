@@ -1270,6 +1270,7 @@
     </ul>
     <input type="hidden" name="pollID" value="<?php echo $pollData['poll']['id']; ?>">
     <input type="submit" name="voteSubmit" class="button" value="Vote" class="btn info">
+
     <a href="results.php?pollID=<?php echo $pollData['poll']['id']; ?>">Results</a>
     </form>
 </div>
@@ -1285,7 +1286,8 @@ if(isset($_POST['voteSubmit'])){
     if($voteSubmit){
         //store in $_COOKIE to signify the user has voted
         setcookie($_POST['pollID'], 1, time()+60*60*24*365);
-        
+
+       echo "<script> swal('Good job!', 'Your vote have been send it !', 'success')</script>";
         $statusMsg = 'Your vote has been submitted successfully.';
     }else{
         $statusMsg = 'Your vote already had submitted.';

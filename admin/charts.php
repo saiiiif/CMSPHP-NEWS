@@ -1,4 +1,6 @@
  <?php include "../includes/db.php"; ?>
+
+
  
  <!DOCTYPE html>
 <html lang="en">
@@ -14,6 +16,7 @@
     <title>SB Admin - Bootstrap Admin Template</title>
 
     <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link href="css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom CSS -->
@@ -29,28 +32,16 @@
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
-   <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-  <script type="text/javascript">
-    google.charts.load('current', {packages: ['corechart']});
-    google.charts.setOnLoadCallback(drawChart);
 
-    function drawChart() {
-      // Define the chart to be drawn.
-      var data = new google.visualization.DataTable();
-      data.addColumn('string', 'Element');
-      data.addColumn('number', 'Percentage');
-      data.addRows([
-        ['Nitrogen', 0.78],
-        ['Oxygen', 0.21],
-        ['Other', 0.01]
-      ]);
+ <style type="text/css">
+     
 
-      // Instantiate and draw the chart.
-      var chart = new google.visualization.PieChart(document.getElementById('myPieChart'));
-      chart.draw(data, null);
-    }
-  </script>
 
+     #inner {
+  display: table;
+  margin: 0 auto;
+}
+ </style>
 
 
 
@@ -222,6 +213,18 @@
             </div>
             <!-- /.navbar-collapse -->
         </nav>
+   
+<script>
+var countBox =1;
+var boxName = 0;
+function addInput()
+{
+     var boxName="enter option Poll"+countBox; 
+document.getElementById('responce').innerHTML+='<br/><input required class="form-control" type="text" id="'+boxName+'" value="'+boxName+'" "  /><br/>';
+     countBox += 1;
+}
+</script>
+
          
       <script>
 
@@ -251,6 +254,92 @@
                                 <i class="fa fa-file"></i> Blank Page
                             </li>
                         </ol>
+
+
+                <!-- form for adding polls -->
+
+
+                                       <div id="outer" style="width:100%">
+                                        <div id="inner">
+                  <form class="form-group" method="POST" >
+                  
+                   <label id="inner"> add new Poll subject </label>
+
+                   <input type="text" name="subject" placeholder="enter subject here" class="form-control"  required>
+
+                <label id="inner">    add Poll option </label>   
+                      <span id="responce">
+                      <input  value="Add Poll option"  type="button" onclick="addInput()" class="btn btn-outline-primary" >
+                      </span>
+
+                   <input type="text" name="polloption1" placeholder="enter option here" class="form-control"  required> <br> 
+
+                   <input type="text" name="polloption2" placeholder="enter option here" class="form-control" required >
+
+                   
+                 
+                  
+
+                <input type="submit" name="submit" value="Add" class="btn btn-primary"  id="inner" >
+
+
+
+                </form>      
+                  </div>
+                  </div>
+                 
+
+
+
+                 <!-- php code for the form -->
+
+
+                   
+                 <?php 
+                   if(isset($_POST['submit'])){
+                    
+                    $subject=$_POST['subject'];
+
+                    $polloption1=$_POST['polloption1'];
+
+                    $polloption2=$_POST['polloption2'];
+                    
+                 $query="INSERT INTO polls (subject)";
+
+                $query.="VALUE('{$subject }')";
+
+                 $create_poll_query=mysqli_query($connection,$query);
+                     if(!$create_poll_query){
+
+
+                      die('QUERY faild'.mysqli_error($connection));
+
+                            }
+
+
+                $query1="INSERT INTO option_polls (poll_id,name) ";
+                $query1.="VALUE('{$subject}', '{$polloption1}','{$polloption2}')";
+
+
+                  $create_polloption_query=mysqli_query($connection,$query1);
+                     if(!$create_polloption_query){
+
+
+                      die('QUERY faild'.mysqli_error($connection));
+
+                            }
+
+
+                   }
+                 
+
+
+
+
+
+                  ?>
+
+
                     </div>
                 </div>
                 <!-- /.row -->
