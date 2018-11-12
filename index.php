@@ -197,7 +197,7 @@
 												$post_title=$row['post_title'];
 												$post_author=$row['post_author'];
 												$post_date=$row['post_date'];
-												$post_image=$row['post_image'];
+												//$post_image=$row['post_image'];
 												$post_content=$row['post_content'];
 												
 												
@@ -1487,7 +1487,7 @@ if(isset($_POST['voteSubmit'])){
                     </div>
                     <div class="col-xs-8">
                         <ul class="list-unstyled">
-                            <li><a href="#">تواصل معنا</a></li>
+                            <li><a href="contact.php">تواصل معنا</a></li>
                             <li><a href="#">تبليغ عن عطل</a></li>
                             
                         </ul>
