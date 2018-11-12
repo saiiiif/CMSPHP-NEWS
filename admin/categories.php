@@ -1,9 +1,24 @@
- 
+
+
 <?php include "../includes/db.php" ; ?>
  <?php include "includes/header.php"; ?>
 
 <body>
-
+         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script>
+    $(document).ready(function($) {
+    var url = window.location.href
+    if(url.indexOf('?')==-1)
+   $("#update").hide();
+   else 
+   $("#update").show();
+   $("#cat_edit").click(function() {
+   $("#update").show();
+      var name = $("#update").name();
+           });  
+ $("#submit").click(function(){	});
+});    
+    </script>
     <div id="wrapper">
 
         <!-- Navigation -->
@@ -187,11 +202,12 @@
                   
                         <div class="col-xs-6">
 
-        <table class="table">
-                <thead>
-                        <th>category</th>
-                    </tr>
-                </thead>
+                            <table class="table">
+                                 <thead>
+                                     <tr>
+                                           <th>category</th>
+                                     </tr>
+                                 </thead>
                 <tbody>
             
             <?php 
@@ -202,10 +218,9 @@
 
                 echo "<tr>"; 
                 echo "<td>{$cat_title}</td>";  
-                echo "<td><a href='category.php?delete={$cat_id}'>delete</a> </td>";
-                echo "<td><a href='category.php?edit={$cat_id}'>edit</a> </td>";
+                echo "<td ><a href='categories.php?delete={$cat_id}'>delete</a> </td>";
+                echo "<td ><a id='cat_edit' href='categories.php?edit={$cat_id}&name={$cat_title}'>edit</a> </td>";
                 echo "</tr>" ;
-
             }
             ?>
 
@@ -217,21 +232,21 @@
           $delete_query=mysqli_query($connection ,$query);
           }
           ?>
-
+                      
+      
 
                 </tbody>
-                </table>
-
-                  
-
-                 </div>
+                             </table>
+                        </div>
                         <ol class="breadcrumb">
 
 
                         <?php
                         if(isset($_POST['submit'])){
 
-                        $cat_title=$_POST['cat_title'];
+                            if(isset($_POST['cat_title']))
+                        {
+                            $cat_title=$_POST['cat_title'];
 
                         if($cat_title =="" || empty($cat_title)){
 
@@ -253,9 +268,19 @@
                         }
 
                         }
+                        if (isset($_GET['cat_id'])) 
+                            {
+                          $the_cat_id=$_GET['cat_id'];
+                          $cat_title=$_GET['cat_title'];
+                          $query="UPDATE category SET cat_title ={$cat_title}  WHERE cat_id ={$the_cat_id}";
+                          $UPDATE_query=mysqli_query($connection ,$query);
+                    }
+                            
+                                              echo "requete".$query;
+
+                          }
 
                         ?>
-                  
                         
                          <form action="" method="POST" >
                             <label>Add a New category </label>
@@ -268,22 +293,21 @@
                               </form>
 
                                    
-                      </br>
+                      <br/>
 
-                        <form action="" method="POST" >
+                      <form action="" method="POST" id="update" >
 
                         <label>   Update category </label>
-                            
-                        <input type="text" name="cat_title">
-
-
-                        <input type="submit" name="submit" value="Update" class="btn btn-primary">
-
+                             <?php 
+                          if(isset($_GET['edit'])){
+                          $the_cat_id=$_GET['edit'];
+                          $cat_title=$_GET['name'];
+                          echo "<input type='text' name='cat_id' value='{$the_cat_id}'>";
+                          echo "<input type='text'name='cat_title' value='{$cat_title}'>";
+                          }
+                           ?>
+                        <input type="submit" id="submit" value="Update" class="btn btn-primary">
                               </form>
-
-                      
-
-
                         </ol>
 
                   
