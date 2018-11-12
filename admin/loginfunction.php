@@ -1,4 +1,14 @@
-<?php include"../includes/db.php"; ?>
+<?php include"../includes/db.php"; 
+session_start ();
+if (isset($_SESSION['nb']))
+{$_SESSION['nb']=$_SESSION['nb']+1;
+
+}
+else
+{
+$_SESSION['nb']=0;    
+}  
+?>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 
@@ -19,7 +29,6 @@
 
    die("QUERY FAILD".mysqli_error($connection));
 
-
     }
 
 
@@ -33,31 +42,13 @@
       $db_role=$row['user_role'];
 
     }
-    if($username !== $db_username && $user_password !==$db_password){
-
-     
-      header("location: login.php");
-
-     
-   
-
-    
-
-     
-
-
-     
-
-
-
-    }
+    if(($username !== $db_username) &&( $user_password !==$db_password) )
+         {header("location: login.php");}
     elseif($username ==$db_username && $user_password ==$db_password) {
-      header("location: index.php");
-      
+       $_SESSION['nb']=0; 
+       $_SESSION['login'] = $db_username;
+       $_SESSION['id'] = $db_id;
+              header("location: index.php");  
     }
-  
-
-
-
-   }
+    }
    ?>

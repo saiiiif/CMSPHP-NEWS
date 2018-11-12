@@ -1,7 +1,10 @@
-<?php include"../includes/db.php"; ?>
-
-
-
+<?php include"../includes/db.php"; 
+ session_start ();
+ if(isset($_SESSION['login'] ))
+{
+header("location: index.php");  
+}
+?>
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <link href="css/plugins/loginStyle.css" rel="stylesheet" >              
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
@@ -21,32 +24,29 @@
 
 <?php    
 echo "<script>   swal('wrong username or password','','warning');  </script>";
-?>
 
+?>
     <!-- Login Form -->
     <form  method="post" action="loginfunction.php">
 
       <input type="text"  class="fadeIn second" name="username1" placeholder="username" >
-      <input type="text"  class="fadeIn third" name="user_password1" placeholder="password" >
+      <input type="password"  class="fadeIn third" name="user_password1" placeholder="password" >
       <input type="submit" class="fadeIn fourth" value="Log In" name="login">
-
-
+      
     </form>
-
-
-
-
-   
-
     <!-- Remind Passowrd -->
     <div id="formFooter">
       <a class="underlineHover" href="../index.php">Go back to the Website if your not authorized</a>
-    
-
-
-
+      <?php if (isset($_SESSION['nb']))
+      { if ($_SESSION['nb']==3)
+          {
+         echo "<script>   swal('mot de passe érroné 3 fois ');  </script>";
+         sleep (7);
+          }
+      {echo $_SESSION['nb'];}
+      }
+?>
     </div>
-
   </div>
 </div>
 

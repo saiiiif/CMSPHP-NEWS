@@ -255,7 +255,7 @@
 
                         $post_title=$_POST['post_title'];
                         $post_author=$_POST['post_author'];
-                        $post_image=addslashes (file_get_contents ($_FILES['post_image']['tmp_name']));
+                       // $post_image=addslashes (file_get_contents ($_FILES['post_image']['tmp_name']));
                         $post_content=$_POST['post_content'];
                         $post_date=$_POST['date'];
                         $post_id=$_POST['post_id'];
@@ -263,7 +263,8 @@
                             
                             echo "this field should not be empty";
                         } else{
-                            $query="Update posts Set post_title ='{$post_title}',post_author ='{$post_author}',post_date={$post_date},post_content='{$post_content}',post_image={$post_image}) where post_id={$post_id}";
+                            $query="Update posts Set post_title ='{$post_title}',post_author ='{$post_author}',post_date='{$post_date}',post_content='{$post_content}',post_image=NULL where post_id={$post_id}";
+                            echo $query ;
                             $edit_post_query=mysqli_query($connection,$query);
                             if(!$edit_post_query){
 
