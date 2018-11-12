@@ -125,10 +125,10 @@
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">
                     <li>
-                        <a href="index.html"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
+                        <a href="index.php"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
                     </li>
                     <li>
-                        <a href="charts.html"><i class="fa fa-fw fa-bar-chart-o"></i> Charts</a>
+                        <a href="charts.php"><i class="fa fa-fw fa-bar-chart-o"></i> Charts</a>
                     </li>
                     <li>
                         <a href="tables.html"><i class="fa fa-fw fa-table"></i> Tables</a>
@@ -207,7 +207,8 @@
                         <th>user role </th>
                     </thead>
                     <tbody>
-                 <?php while ($row =mysqli_fetch_assoc($select_user_query)){
+                 <?php while ($row =mysqli_fetch_assoc($select_user_query))
+                {
                    
                 $username=$row['username'];
                 $user_email=$row['user_email'];
@@ -221,14 +222,15 @@
                 echo "<td> {$user_image}</td>";
                 echo "<td>{$user_role}</td>";
 
-                 echo "</tr>";
+                echo "</tr>";
+
+                }
+                ?>
 
 
 
-                 }
-                 ?>
-                    </tbody>
-                 </table>
+                </tbody>
+                </table>
 
                 
 

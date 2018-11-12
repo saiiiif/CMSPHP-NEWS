@@ -52,7 +52,7 @@
                 </div>
                 <div class="col-md-4">
                     <div class="logo">
-                        <a href="index.html"><img src="assets/img/logo.png" alt="Tech NewsLogo"></a>
+                        <a href="index.html"><img src="assets/img/logochahed.png" alt="Tech NewsLogo" height="120" width="120f"></a>
                     </div>
                     <!-- Logo Section -->
                 </div>
@@ -1287,7 +1287,7 @@ if(isset($_POST['voteSubmit'])){
         //store in $_COOKIE to signify the user has voted
         setcookie($_POST['pollID'], 1, time()+60*60*24*365);
 
-       echo "<script> swal('Good job!', 'Your vote have been send it !', 'success')</script>";
+       echo "<script> swal('شكرا', 'لقد تم التصويت', 'success')</script>";
         $statusMsg = 'Your vote has been submitted successfully.';
     }else{
         $statusMsg = 'Your vote already had submitted.';
@@ -1461,7 +1461,7 @@ if(isset($_POST['voteSubmit'])){
                 <div class="footer_widget_title"><h3><a href="category.html" target="_self">  معلومات عنا </a></h3></div>
                 <div class="logo footer-logo">
                     <a title="fontanero" href="index.html">
-                        <img src="assets/img/tech_about.jpg" alt="technews">
+                        <img src="assets/img/logochahed.png" alt="technews" height="150" width="250">
                     </a>
 
                     <p> موقع إخباري مستقل و إحترافي  </p>

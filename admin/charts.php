@@ -171,10 +171,10 @@
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">
                     <li>
-                        <a href="index.html"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
+                        <a href="index.php"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
                     </li>
                     <li>
-                        <a href="charts.html"><i class="fa fa-fw fa-bar-chart-o"></i> Charts</a>
+                        <a href="charts.php"><i class="fa fa-fw fa-bar-chart-o"></i> Charts</a>
                     </li>
                     <li>
                         <a href="tables.html"><i class="fa fa-fw fa-table"></i> Tables</a>
@@ -248,7 +248,7 @@ document.getElementById('responce').innerHTML+='<br/><input required class="form
                         </h1>
                         <ol class="breadcrumb">
                             <li>
-                                <i class="fa fa-dashboard"></i>  <a href="index.html">Dashboard</a>
+                                <i class="fa fa-dashboard"></i>  <a href="index.php">Dashboard</a>
                             </li>
                             <li class="active">
                                 <i class="fa fa-file"></i> Blank Page
